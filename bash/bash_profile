@@ -1,33 +1,16 @@
-hg_ovh (){
-	#local hgpath=/usr/local/bin/hg
-	local hgpath=$(which hg)
-	if [ $# -lt 1 ]
-	then
-		$hgpath
-	fi
-
-	if [ $# -eq 1 ]
-	then
-		$hgpath $1 --remotecmd bin/hg
-	fi
-	
-	if [ $# -ge 2 ]
-	then
-		local action=$1
-		shift
-		$hgpath $action --remotecmd bin/hg $*
-	fi
-}
-
 export PATH=$PATH:~/bin
-export SVN_SSH='ssh -i /Users/TisseurDeToile/.ssh/id_dsa_vcs'
 
 alias xcode='open -a xcode'
 alias text='open -a TextEdit'
 alias pre='open -a Preview'
-#alias l='ls'
-#alias ll='ls -l'
-#alias la='ls -a'
+
+alias l='ls'
+alias ll='ls -l'
+alias la='ls -a'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
 alias lo='logout'
 alias c='clear'
 alias ttop='top -U $USER'
@@ -41,3 +24,13 @@ alias gh='history | grep'
 alias fs='du --max-depth=1 -h'
 alias c='clear'
 alias pg='ping www.google.fr'
+
+alias q='exit'
+alias lll='ls -la | less'
+alias ls='ls --color=always'
+alias ru='du -sh ./* | sort -nr'
+
+sdf () {
+df -hP | awk '+$5 >= 80 {print}'
+}
+
